@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Habitual is a calm daily habit tracker with calendar check-ins and streak tracking.">
+  <title>Habitual — Small steps, visible progress</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="auth-page">
+  <main class="auth-shell">
+    <section class="auth-story">
+      <div class="story-glow story-glow-one" aria-hidden="true"></div>
+      <div class="story-glow story-glow-two" aria-hidden="true"></div>
+
+      <a class="brand brand-light" href="/" aria-label="Habitual home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 12.5l4 4L19 6.5"/></svg>
+        </span>
+        <span>Habitual</span>
+      </a>
+
+      <div class="story-copy">
+        <p class="eyebrow eyebrow-light">A calmer way to grow</p>
+        <h1>Small steps.<br><em>Visible progress.</em></h1>
+        <p class="story-lead">Build routines that stick with a daily tracker, a month-at-a-glance calendar, and streaks that keep you honest.</p>
+      </div>
+
+      <div class="preview-card" aria-hidden="true">
+        <div class="preview-top">
+          <span>Today's rhythm</span>
+          <span class="preview-date">Sat, 14 Nov</span>
+        </div>
+        <div class="preview-habit done">
+          <span class="pv-check">
+            <svg viewBox="0 0 20 20"><path d="M4 10.5l4 4L16 5.5"/></svg>
+          </span>
+          <div class="pv-copy"><strong>Morning run</strong><small>Fitness · 12 day streak</small></div>
+          <span class="pv-badge">Done</span>
+        </div>
+        <div class="preview-habit done">
+          <span class="pv-check">
+            <svg viewBox="0 0 20 20"><path d="M4 10.5l4 4L16 5.5"/></svg>
+          </span>
+          <div class="pv-copy"><strong>Read 10 pages</strong><small>Learning · 7 day streak</small></div>
+          <span class="pv-badge">Done</span>
+        </div>
+        <div class="preview-habit">
+          <span class="pv-check pv-check-empty"></span>
+          <div class="pv-copy"><strong>Evening stretch</strong><small>Wellbeing · 3× per week</small></div>
+          <span class="pv-badge pv-badge-soft">2 / 3</span>
+        </div>
+        <div class="preview-week">
+          <span class="pv-day"><small>M</small><i class="on"></i></span>
+          <span class="pv-day"><small>T</small><i class="on"></i></span>
+          <span class="pv-day"><small>W</small><i class="on"></i></span>
+          <span class="pv-day"><small>T</small><i class="on"></i></span>
+          <span class="pv-day"><small>F</small><i class="on"></i></span>
+          <span class="pv-day today"><small>S</small><i></i></span>
+          <span class="pv-day"><small>S</small><i></i></span>
+        </div>
+      </div>
+
+      <div class="story-points">
+        <span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4L16 5.5"/></svg>
+          Calendar check-ins
+        </span>
+        <span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4L16 5.5"/></svg>
+          Streaks per habit
+        </span>
+        <span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4L16 5.5"/></svg>
+          Yours alone
+        </span>
+      </div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <a class="brand brand-mobile" href="/" aria-label="Habitual home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 12.5l4 4L19 6.5"/></svg>
+          </span>
+          <span>Habitual</span>
+        </a>
+
+        <div class="auth-heading">
+          <p class="eyebrow" id="authEyebrow">Welcome back</p>
+          <h2 id="authTitle">Pick up where you left off.</h2>
+          <p id="authSubtitle">Your habits, streaks and calendar are waiting.</p>
+        </div>
+
+        <div class="auth-tabs" role="tablist" aria-label="Account access">
+          <button class="auth-tab is-active" type="button" role="tab" aria-selected="true" data-mode="login">Sign in</button>
+          <button class="auth-tab" type="button" role="tab" aria-selected="false" data-mode="register">Create account</button>
+        </div>
+
+        <div class="form-error" id="authError" role="alert" hidden></div>
+
+        <form id="loginForm" class="auth-form" novalidate>
+          <label class="field">
+            <span>Email address</span>
+            <input id="loginEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <span class="input-wrap">
+              <input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Your password" required>
+              <button class="reveal" type="button" data-reveal="loginPassword" aria-label="Show password">
+                <svg class="eye-open" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3.2"/></svg>
+                <svg class="eye-shut" viewBox="0 0 24 24"><path d="M4 4l16 16M9.7 6.1A10.8 10.8 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-3 3.9M6.2 8.2A16.5 16.5 0 0 0 2.5 12S6 18.5 12 18.5c1.2 0 2.3-.3 3.3-.7"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+              </button>
+            </span>
+          </label>
+          <button class="btn btn-primary btn-block" type="submit" id="loginSubmit">
+            <span class="btn-label">Sign in</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <form id="registerForm" class="auth-form" novalidate hidden>
+          <label class="field">
+            <span>Your name</span>
+            <input id="registerName" name="displayName" type="text" autocomplete="name" placeholder="Alex Morgan" maxlength="100" required>
+          </label>
+          <label class="field">
+            <span>Email address</span>
+            <input id="registerEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <span class="input-wrap">
+              <input id="registerPassword" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" minlength="8" required>
+              <button class="reveal" type="button" data-reveal="registerPassword" aria-label="Show password">
+                <svg class="eye-open" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3.2"/></svg>
+                <svg class="eye-shut" viewBox="0 0 24 24"><path d="M4 4l16 16M9.7 6.1A10.8 10.8 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-3 3.9M6.2 8.2A16.5 16.5 0 0 0 2.5 12S6 18.5 12 18.5c1.2 0 2.3-.3 3.3-.7"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+              </button>
+            </span>
+            <small class="field-hint">Use 8–72 characters.</small>
+          </label>
+          <button class="btn btn-primary btn-block" type="submit" id="registerSubmit">
+            <span class="btn-label">Create my account</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+          <p class="auth-terms">By creating an account you agree to keep showing up for yourself.</p>
+        </form>
+
+        <p class="auth-switch" id="authSwitch">
+          New here? <button type="button" data-mode="register">Create an account</button>
+        </p>
+      </div>
+      <p class="auth-foot">Spring Boot · PostgreSQL · Docker · JWT</p>
+    </section>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:habittracker;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  flyway:
+    enabled: false
+
+app:
+  timezone: UTC
+  jwt:
+    secret: test-only-secret-that-is-long-enough-1234567890
+    expiration-ms: 3600000
+
+logging:
+  level:
+    root: WARN
+    com.habittracker: INFO

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Your daily habit tracker, calendar and streaks.">
+  <title>Today — Habitual</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="app-page">
+  <header class="topbar">
+    <a class="brand" href="/app.html" aria-label="Habitual home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M5 12.5l4 4L19 6.5"/></svg>
+      </span>
+      <span>Habitual</span>
+    </a>
+
+    <div class="topbar-center">
+      <span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        <span id="todayLabel">Today</span>
+      </span>
+    </div>
+
+    <div class="topbar-actions">
+      <button class="icon-btn" id="refreshBtn" type="button" title="Refresh data" aria-label="Refresh data">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 6.3M20 4v7h-7"/></svg>
+      </button>
+      <div class="user-chip">
+        <span class="avatar" id="avatar" aria-hidden="true">H</span>
+        <div>
+          <strong id="userName">Your account</strong>
+          <span id="userEmail"></span>
+        </div>
+      </div>
+      <button class="icon-btn" id="logoutBtn" type="button" title="Sign out" aria-label="Sign out">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <section class="page-head">
+      <div>
+        <p class="eyebrow" id="greetingDate">Saturday, 14 November</p>
+        <h1 id="greeting">Good morning, Alex</h1>
+        <p class="page-sub" id="pageSubtitle">One small check-in at a time.</p>
+      </div>
+      <button class="btn btn-primary" id="addHabitBtn" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        New habit
+      </button>
+    </section>
+
+    <section class="stats-grid" aria-label="Progress summary">
+      <article class="stat-card">
+        <span class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </span>
+        <div class="stat-copy">
+          <span class="stat-label">Today</span>
+          <strong class="stat-value" id="statToday">—</strong>
+          <span class="stat-detail" id="statTodayDetail">No habits yet</span>
+        </div>
+        <div class="stat-ring" id="todayRing" style="--value: 0" aria-hidden="true">
+          <span id="todayRingValue">0</span>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+        </span>
+        <div class="stat-copy">
+          <span class="stat-label">This week</span>
+          <strong class="stat-value" id="statWeek">—</strong>
+          <span class="stat-detail" id="statWeekDetail">Mon — Sun</span>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-3M20 16v-8"/></svg>
+        </span>
+        <div class="stat-copy">
+          <span class="stat-label">This month</span>
+          <strong class="stat-value" id="statMonth">—</strong>
+          <span class="stat-detail" id="statMonthDetail">A fresh month</span>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon amber" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 22c4.4 0 7-2.8 7-6.4 0-2.5-1.3-4.5-3-6.2-.4 1.3-1.1 2.2-2 2.8.1-3.2-1.7-6.2-4.3-7.9.2 3.7-1.2 5.6-2.7 7.4A7.8 7.8 0 0 0 5 15.6C5 19.2 7.6 22 12 22Z"/></svg>
+        </span>
+        <div class="stat-copy">
+          <span class="stat-label">Best streak</span>
+          <strong class="stat-value" id="statBest">—</strong>
+          <span class="stat-detail" id="statBestDetail">Start one today</span>
+        </div>
+        <span class="stat-progress" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 22c4.4 0 7-2.8 7-6.4 0-2.5-1.3-4.5-3-6.2-.4 1.3-1.1 2.2-2 2.8.1-3.2-1.7-6.2-4.3-7.9.2 3.7-1.2 5.6-2.7 7.4A7.8 7.8 0 0 0 5 15.6C5 19.2 7.6 22 12 22Z"/></svg>
+        </span>
+      </article>
+    </section>
+
+    <div class="dashboard-grid">
+      <section class="panel today-panel" aria-labelledby="todayHeading">
+        <header class="panel-head">
+          <div>
+            <p class="eyebrow">Daily tracker</p>
+            <h2 id="todayHeading">Today's rhythm</h2>
+          </div>
+          <span class="pill" id="todayPill">0 / 0 done</span>
+        </header>
+        <div class="today-list" id="todayList"></div>
+        <div class="empty-state" id="todayEmpty" hidden>
+          <span class="empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg>
+          </span>
+          <strong>A quiet day</strong>
+          <p>Nothing is scheduled for today. Add a daily habit or enjoy the rest day.</p>
+          <button class="btn btn-ghost" type="button" data-open-habit>Create a habit</button>
+        </div>
+      </section>
+
+      <section class="panel calendar-panel" aria-labelledby="calendarHeading">
+        <header class="calendar-head">
+          <div>
+            <p class="eyebrow">Calendar</p>
+            <h2 id="calendarHeading">Check-in view</h2>
+          </div>
+          <div class="calendar-controls">
+            <select class="select" id="calendarHabitSelect" aria-label="Choose habit for calendar"></select>
+            <button class="month-btn" id="prevMonth" type="button" aria-label="Previous month">
+              <svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="month-btn" id="nextMonth" type="button" aria-label="Next month">
+              <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="calendar-meta">
+          <span id="calendarHabitMeta">Select a habit</span>
+          <span class="cal-progress">
+            <strong id="calendarDone">0</strong>
+            <span>/ <span id="calendarTarget">0</span> this month</span>
+          </span>
+        </div>
+
+        <div class="calendar-weekdays" aria-hidden="true">
+          <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+
+        <div class="calendar-legend">
+          <span class="legend-item"><i class="legend-swatch done"></i> Checked in</span>
+          <span class="legend-item"><i class="legend-swatch"></i> Scheduled</span>
+          <span class="legend-item"><i class="legend-swatch today"></i> Today</span>
+        </div>
+
+        <div class="empty-state calendar-empty" id="calendarEmpty" hidden>
+          <span class="empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+          </span>
+          <strong>Your calendar is waiting</strong>
+          <p>Add your first habit, then tap any day to check in.</p>
+          <button class="btn btn-ghost" type="button" data-open-habit>Add a habit</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel habits-panel" aria-labelledby="habitsHeading">
+      <header class="panel-head">
+        <div>
+          <p class="eyebrow">Your practice</p>
+          <h2 id="habitsHeading">Habits &amp; order</h2>
+        </div>
+        <span class="panel-hint">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h.01M8 12h.01M8 18h.01M16 6h.01M16 12h.01M16 18h.01"/><circle cx="8" cy="6" r="1.4"/><circle cx="8" cy="12" r="1.4"/><circle cx="8" cy="18" r="1.4"/><circle cx="16" cy="6" r="1.4"/><circle cx="16" cy="12" r="1.4"/><circle cx="16" cy="18" r="1.4"/></svg>
+          Drag to reorder by importance
+        </span>
+      </header>
+      <div class="habit-manage-list" id="habitList"></div>
+      <div class="empty-state" id="habitsEmpty" hidden>
+        <span class="empty-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg>
+        </span>
+        <strong>Build your first ritual</strong>
+        <p>Start with one small habit. You can add more and reorder them anytime.</p>
+        <button class="btn btn-primary" type="button" data-open-habit>Create your first habit</button>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <span>Habitual — small steps, visible progress.</span>
+      <span>API docs at <a href="/swagger-ui.html" target="_blank" rel="noopener">/swagger-ui.html</a></span>
+    </footer>
+  </main>
+
+  <!-- Add / edit habit -->
+  <div class="modal" id="habitModal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="habitModalTitle">
+      <header class="modal-head">
+        <div>
+          <p class="eyebrow" id="habitModalEyebrow">New practice</p>
+          <h2 id="habitModalTitle">Add a habit</h2>
+        </div>
+        <button class="modal-close" type="button" data-close-modal aria-label="Close dialog">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+
+      <form class="habit-form" id="habitForm" novalidate>
+        <input type="hidden" id="habitId" value="">
+        <label class="field">
+          <span>Habit name</span>
+          <input id="habitName" type="text" maxlength="120" placeholder="e.g. Morning run" required>
+        </label>
+
+        <label class="field">
+          <span>Description <em class="field-hint">(optional)</em></span>
+          <textarea id="habitDescription" maxlength="1000" placeholder="Why does this habit matter to you?"></textarea>
+        </label>
+
+        <label class="field">
+          <span>Category <em class="field-hint">(optional)</em></span>
+          <input id="habitCategory" type="text" list="categoryOptions" maxlength="60" placeholder="Health, Learning…">
+          <datalist id="categoryOptions">
+            <option value="Health"></option>
+            <option value="Fitness"></option>
+            <option value="Learning"></option>
+            <option value="Mindfulness"></option>
+            <option value="Creative"></option>
+            <option value="Home"></option>
+          </datalist>
+        </label>
+
+        <fieldset>
+          <legend>How often?</legend>
+          <div class="frequency-options">
+            <label class="freq-option">
+              <input type="radio" name="frequencyType" value="DAILY" checked>
+              <span><strong>Every day</strong><small>Daily rhythm</small></span>
+            </label>
+            <label class="freq-option">
+              <input type="radio" name="frequencyType" value="SPECIFIC_DAYS">
+              <span><strong>Specific days</strong><small>Pick weekdays</small></span>
+            </label>
+            <label class="freq-option">
+              <input type="radio" name="frequencyType" value="WEEKLY">
+              <span><strong>Times a week</strong><small>Flexible schedule</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="conditional-field" id="weekdayField" hidden>
+          <span>Which days?</span>
+          <div class="weekday-chips">
+            <label class="weekday-chip"><input type="checkbox" name="weekday" value="1"><span title="Monday">M</span></label>
+            <label class="weekday-chip"><input type="checkbox" name="weekday" value="2"><span title="Tuesday">T</span></label>
+            <label class="weekday-chip"><input type="checkbox" name="weekday" value="3"><span title="Wednesday">W</span></label>
+            <label class="weekday-chip"><input type="checkbox" name="weekday" value="4"><span title="Thursday">T</span></label>
+            <label class="weekday-chip"><input type="checkbox" name="weekday" value="5"><span title="Friday">F</span></label>
+            <label class="weekday-chip"><input type="checkbox" name="weekday" value="6"><span title="Saturday">S</span></label>
+            <label class="weekday-chip"><input type="checkbox" name="weekday" value="7"><span title="Sunday">S</span></label>
+          </div>
+        </div>
+
+        <div class="conditional-field" id="weeklyField" hidden>
+          <span>Target per week</span>
+          <div class="weekly-target">
+            <input type="number" id="habitTimesPerWeek" min="1" max="7" value="3" aria-label="Target check-ins per week">
+            <span>check-ins each week</span>
+          </div>
+        </div>
+
+        <div class="form-error modal-error" id="habitError" role="alert" hidden></div>
+
+        <div class="modal-actions">
+          <button class="btn btn-ghost" type="button" data-close-modal>Cancel</button>
+          <button class="btn btn-primary" type="submit" id="habitSaveBtn">
+            <span class="btn-label" id="habitSaveLabel">Save habit</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete confirmation -->
+  <div class="modal" id="confirmModal" hidden>
+    <div class="modal-backdrop" data-close-confirm></div>
+    <div class="modal-card confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <header class="modal-head">
+        <div>
+          <p class="eyebrow">Please confirm</p>
+          <h2 id="confirmTitle">Delete this habit?</h2>
+        </div>
+        <button class="modal-close" type="button" data-close-confirm aria-label="Close dialog">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+      <p class="confirm-copy" id="confirmMessage">This will permanently delete the habit and every check-in attached to it.</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" type="button" data-close-confirm>Keep it</button>
+        <button class="btn btn-danger" type="button" id="confirmDeleteBtn">
+          <span class="btn-label">Delete habit</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
+    <span id="toastText"></span>
+  </div>
+
+  <noscript>
+    <p style="text-align:center;padding:24px">Habitual needs JavaScript enabled to run.</p>
+  </noscript>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
