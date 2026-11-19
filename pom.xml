@@ -22,7 +22,7 @@
         <springdoc.version>2.8.6</springdoc.version>
         <jjwt.version>0.12.6</jjwt.version>
         <spotless.version>2.44.2</spotless.version>
-        <jacoco.version>0.8.12</jacoco.version>
+        <jacoco.version>0.8.16</jacoco.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
     </properties>
 
